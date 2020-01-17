@@ -60,8 +60,8 @@ function TextInput(props){
         props.onSend(text)
         setText('')
       }}>
-      &uarr;
-      </button>
+      &uarr; 
+      </button> 
     </form>
   </div>
 }

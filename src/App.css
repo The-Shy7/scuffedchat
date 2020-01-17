@@ -73,7 +73,7 @@ input{
   outline:none;
 }
 
-form{
+form{ 
   position: relative;
   display: inline-flex;
 }
