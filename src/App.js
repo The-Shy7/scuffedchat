@@ -15,38 +15,6 @@ function App() {
       <p>Scuffed Chat</p>
     </header>
 
-    {/* <div class="chat">
-      <div class="mine messages">
-        <div class="message last">
-          Dude
-        </div>
-      </div>
-
-      <div class="yours messages">
-        <div class="message">
-          Hey!
-        </div>
-
-        <div class="message">
-          You there?
-        </div>
-
-        <div class="message last">
-          Hello, how's it going?
-        </div>
-      </div>
-
-      <div class="mine messages">
-        <div class="message">
-          Great thanks!
-        </div> 
-        
-        <div class="message last">
-          How about you?
-        </div>
-      </div>
-    </div> */}
-
     <div className="messages">
       {messages.map((m,i)=> {
         return <div key={i} className="msg-wrap">
