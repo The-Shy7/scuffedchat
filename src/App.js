@@ -38,7 +38,7 @@ function App() {
 
 function TextInput(props){
   var [text, setText] = useState('') 
-  
+
   return <div className="text-input-wrap">
     <input 
       value={text} 
