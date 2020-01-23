@@ -1,23 +1,30 @@
-import React, {useState} from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState, useEffect} from 'react'
+import './App.css'
+import NamePicker from './NamePicker.js'
 
 function App() {
   const [messages, setMessages] = useState([])
+  const [name, setName] = useState('')
   console.log(messages)
+
   return <main>
     <header>
-      <img 
-        src="https://banner2.cleanpng.com/20180423/gfe/kisspng-livechat-online-chat-logo-computer-icons-live-chat-5add970945d006.339032601524471561286.jpg"
-        alt="a logo"
-      />
-      
-      <p>Scuffed Chat</p>
+      <div className="logo-wrap">
+        
+        <img className="logo"
+          alt="logo"
+          src="https://static.thenounproject.com/png/543155-200.png" 
+        />
+
+        Scuffed Chat
+      </div>
+
+      <NamePicker onSave={setName} />
     </header>
 
     <div className="messages">
-      {messages.map((m,i)=> {
-        return <div key={i} className="msg-wrap">
+      {messages.map((m,i)=>{
+        return <div key={i} className="message-wrap">
           <div className="message">{m}</div>
         </div>
       })}
@@ -25,28 +32,35 @@ function App() {
 
     <TextInput onSend={(text)=> {
       setMessages([text, ...messages])
-    }}/>
+    }} />
   </main>
 }
 
 function TextInput(props){
-  const [text, setText] = useState()
-
-  return <div className="text-in">
-    <input value={text}
-    placeholder = "Write something" 
-    onChange={e => setText(e.target.value)}
+  var [text, setText] = useState('') 
+  
+  return <div className="text-input-wrap">
+    <input 
+      value={text} 
+      className="text-input"
+      placeholder="Write your message"
+      onChange={e=> setText(e.target.value)}
+      onKeyPress={e=> {
+        if(e.key==='Enter') {
+          if(text) props.onSend(text)
+          setText('')
+        }
+      }}
     />
 
     <button onClick={()=> {
-      if (text) {
-        props.onSend(text)
-      }
+      if(text) props.onSend(text)
       setText('')
-    }}>
-    &uarr; 
-    </button> 
+    }} className="button"
+      disabled={!text}>
+      &uarr; 
+    </button>
   </div>
 }
 
-export default App;
+export default App
