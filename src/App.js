@@ -1,11 +1,20 @@
 import React, {useState, useEffect} from 'react'
 import './App.css'
 import NamePicker from './NamePicker.js'
+import {db} from './db.js'
 
 function App() {
   const [messages, setMessages] = useState([])
   const [name, setName] = useState('')
   console.log(messages)
+
+  useEffect(()=>{
+    db.listen({
+      receive: m=> {
+        setMessages(current=> [m, ...current])
+      },
+    })
+  }, [])
 
   return <main>
     <header>
@@ -25,13 +34,15 @@ function App() {
     <div className="messages">
       {messages.map((m,i)=>{
         return <div key={i} className="message-wrap">
-          <div className="message">{m}</div>
+          <div className="message">{m.text}</div>
         </div>
       })}
     </div>
 
     <TextInput onSend={(text)=> {
-      setMessages([text, ...messages])
+      db.send({
+        text, name, ts: new Date(), 
+      })
     }} />
   </main>
 }
