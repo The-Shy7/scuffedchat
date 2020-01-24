@@ -49,7 +49,7 @@ function Room(props) {
 
     <TextInput onSend={(text)=> {
       db.send({
-        text, name, ts: new Date(), 
+        text, name, ts: new Date(), room
       })
     }} />
   </main>
