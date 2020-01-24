@@ -1,20 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import './App.css'
 import NamePicker from './NamePicker.js'
-import {db} from './db.js'
+import {db, useDB} from './db'
 
 function App() {
-  const [messages, setMessages] = useState([])
   const [name, setName] = useState('')
-  console.log(messages)
-
-  useEffect(()=>{
-    db.listen({
-      receive: m=> {
-        setMessages(current=> [m, ...current])
-      },
-    })
-  }, [])
+  const messages = useDB()
 
   return <main>
     <header>
@@ -34,7 +25,11 @@ function App() {
     <div className="messages">
       {messages.map((m,i)=>{
         return <div key={i} className="message-wrap">
-          <div className="message">{m.text}</div>
+          from={m.name===name?'me':'you'}
+          <div className="message">
+            <div className="msg-name">{m.name}</div>
+            <div className="msg-text">{m.text}</div>
+          </div>
         </div>
       })}
     </div>
