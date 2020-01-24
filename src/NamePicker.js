@@ -19,7 +19,7 @@ function NamePicker(props) {
     const n = localStorage.getItem('name')
     if(n) {
       setName(n)
-      save() 
+      props.onSave(name) 
     }
   }, [])
 
