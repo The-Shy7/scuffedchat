@@ -5,6 +5,11 @@ import {db, useDB} from './db'
 import {BrowserRouter, Route} from 'react-router-dom'
 
 function App() {
+  useEffect(()=>{
+    const {pathname} = window.location
+    if(pathname.length<2) window.location.pathname='home'
+  }, [])
+
   return <BrowserRouter>
     <Route path="/:room" component={Room}/>
   </BrowserRouter>
