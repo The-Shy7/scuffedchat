@@ -15,9 +15,10 @@ function App() {
   </BrowserRouter>
 }
 
-function Room() {
+function Room(props) {
+  const {room}= props.match.params
   const [name, setName] = useState('')
-  const messages = useDB()
+  const messages = useDB(room)
 
   return <main>
     <header>
