@@ -2,8 +2,15 @@ import React, {useState, useEffect} from 'react'
 import './App.css'
 import NamePicker from './NamePicker.js'
 import {db, useDB} from './db'
+import {BrowserRouter, Route} from 'react-router-dom'
 
 function App() {
+  return <BrowserRouter>
+    <Route path="/:room" component={Room}/>
+  </BrowserRouter>
+}
+
+function Room() {
   const [name, setName] = useState('')
   const messages = useDB()
 
@@ -24,8 +31,8 @@ function App() {
 
     <div className="messages">
       {messages.map((m,i)=>{
-        return <div key={i} className="message-wrap">
-          from={m.name===name?'me':'you'}
+        return <div key={i} className="message-wrap"
+          from={m.name===name?'me':'you'}>
           <div className="message">
             <div className="msg-name">{m.name}</div>
             <div className="msg-text">{m.text}</div>
