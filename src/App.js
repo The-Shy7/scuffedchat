@@ -68,22 +68,8 @@ function Room(props) {
   </Div100vh>
 }
 
-const bucket = 'https://firebasestorage.googleapis.com/v0/b/scuffedchat-97e31.appspot.com/o'
+const bucket = 'https://firebasestorage.googleapis.com/v0/b/scuffedchat-97e31.appspot.com/o/'
 const suffix = '.jpg?alt=media'
-
-function Message({m, name}){
-  return <div className="message-wrap"
-    from={m.name===name?'me':'you'}
-    onClick={()=>console.log(m)}>
-    <div className="message">
-      <div className="msg-name">{m.name}</div>
-      <div className="msg-text">
-        {m.text}
-        {m.img && <img src={bucket + m.img + suffix} alt="pic"/>}
-      </div>
-    </div>
-  </div>
-}
 
 function TextInput(props){
   var [text, setText] = useState('') 
@@ -112,6 +98,20 @@ function TextInput(props){
       disabled={!text}>
       &uarr;
     </button>
+  </div>
+}
+
+function Message({m, name}){
+  return <div className="message-wrap"
+    from={m.name===name?'me':'you'}
+    onClick={()=>console.log(m)}>
+    <div className="message">
+      <div className="msg-name">{m.name}</div>
+      <div className="msg-text">
+        {m.text}
+        {m.img && <img src={bucket + m.img + suffix} alt="pic"/>}
+      </div>
+    </div>
   </div>
 }
 
