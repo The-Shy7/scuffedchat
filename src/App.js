@@ -7,6 +7,8 @@ import Camera from 'react-snap-pic'
 import {FiCamera} from 'react-icons/fi'
 import * as firebase from "firebase/app"
 import "firebase/storage"
+import './media.css'
+import Div100vh from 'react-div-100vh'
 
 function App(){
   useEffect(()=>{
@@ -35,7 +37,7 @@ function Room(props) {
     })
   }
 
-  return <main>
+  return <Div100vh>
     {showCamera && <Camera takePicture={takePicture} />}
 
     <header>
@@ -44,7 +46,7 @@ function Room(props) {
           alt="logo"
           src="https://static.thenounproject.com/png/543155-200.png"
         />
-        Chatter
+        Scuffed Chat
       </div>
       <NamePicker onSave={setName} />
     </header>
@@ -63,7 +65,7 @@ function Room(props) {
         })
       }} 
     />
-  </main>
+  </Div100vh>
 }
 
 const bucket = 'https://firebasestorage.googleapis.com/v0/b/scuffedchat-97e31.appspot.com/o'
@@ -94,7 +96,7 @@ function TextInput(props){
     <input 
       value={text} 
       className="text-input"
-      placeholder="write your message"
+      placeholder="Write your message"
       onChange={e=> setText(e.target.value)}
       onKeyPress={e=> {
         if(e.key==='Enter') {
