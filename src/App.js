@@ -23,7 +23,7 @@ function Room(props) {
   const [showCamera, setShowCamera] = useState(false)
   const messages = useDB(room)
 
-  takePicture = (img) => {
+  async function takePicture(img) {
     console.log(img)
     setShowCamera(false)
   }
