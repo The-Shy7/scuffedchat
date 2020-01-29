@@ -3,6 +3,8 @@ import './App.css'
 import NamePicker from './NamePicker.js'
 import {db, useDB} from './db'
 import {BrowserRouter, Route} from 'react-router-dom'
+import { FiSend, FiCamera } from 'react-icons/fi'
+import Camera from 'react-snap-pic'
 
 function App() {
   useEffect(()=>{
@@ -18,9 +20,17 @@ function App() {
 function Room(props) {
   const {room}= props.match.params
   const [name, setName] = useState('')
+  const [showCamera, setShowCamera] = useState(false)
   const messages = useDB(room)
 
+  takePicture = (img) => {
+    console.log(img)
+    setShowCamera(false)
+  }
+
   return <main>
+    {showCamera && <Camera takePicture={takePicture} />}
+
     <header>
       <div className="logo-wrap">
         
@@ -48,10 +58,12 @@ function Room(props) {
     </div>
 
     <TextInput onSend={(text)=> {
-      db.send({
-        text, name, ts: new Date(), room
-      })
-    }} />
+        db.send({
+          text, name, ts: new Date(), room
+        })
+      }} 
+      showCamera={()=>showCamera(true)}
+    />
   </main>
 }
 
@@ -59,6 +71,11 @@ function TextInput(props){
   var [text, setText] = useState('') 
 
   return <div className="text-input-wrap">
+    <button onClick={props.showCamera}
+      style={{left:10, right:'auto'}}>
+      <FiCamera style={{height:15, width:15}} />
+    </button>
+
     <input 
       value={text} 
       className="text-input"
