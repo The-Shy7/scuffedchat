@@ -5,11 +5,12 @@
   box-sizing:border-box;
 }
 
-html,body{
+html,body,#root{
   height:100%;
   position: fixed;
   top:0;left:0;bottom:0;right:0;
 }
+
 body{
   height:100%;
   display:flex;
@@ -37,13 +38,13 @@ header{
   align-items:center;
   justify-content: space-between;
   font-family:'Space Mono', monospace;
-  font-size:24pt;
+  font-size:2rem;
   font-weight: bolder;
   color:black;
 }
 
 .logo {
-  height:42px;
+  height:2.5rem;
   margin-right:5px;
 
 }
@@ -192,10 +193,6 @@ header{
   align-items: center;
   margin-right:12px;
   font-size:1.1rem;
-}
-
-.text-input > input {
-  width:calc(100%-50px);
 }
 
 .camera-button {
