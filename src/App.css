@@ -65,16 +65,15 @@ header{
 
 .text-input{
   border:1px solid black;
-  width:100%;
   border-radius:15px;
   font-size:13px;
   padding:0 11px;
   position:absolute;
-  left:4px;
+  left:35px;
   top:4px;
   height:32px;
   outline:none;
-  width: calc(100% - 8px);
+  width: calc(100% - 40px);
 }
 
 .text-input:focus{
@@ -197,4 +196,17 @@ header{
 
 .text-input > input {
   width:calc(100%-50px);
+}
+
+.camera-button {
+  position: absolute;
+  left: 1px;
+  right: auto;
+  border-radius: 1000px;
+  height: 30px;
+  width: 30px;
+  margin-left: 3px;
+  margin-top: 5px;
+  border: 1px solid black;
+  cursor: pointer;
 }
