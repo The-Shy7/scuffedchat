@@ -63,6 +63,12 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/ad
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
 
+FireBase was used in deploying this app. 
+
+Link: https://scuffedchat-97e31.firebaseapp.com/
+
+Note: Any word or combination of characters after the last "/" will go to another chat room separate from other chat rooms.
+
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
